@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InventoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,11 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['middleware' => 'auth:api', 'prefix' => 'user'], function () {
     Route::get('profile', [AuthController::class, 'profile']);
     Route::get('logout',[AuthController::class , 'logout'] );
+});
+
+Route::group(['middleware' => 'auth:api', 'prefix' => 'inventory'], function () {
+    Route::post('create',[InventoryController::class, 'create']);
+    Route::get('/get',[InventoryController::class, 'get']);
+    Route::post('/update/{inventory}',[InventoryController::class, 'update']);
+    Route::delete('/delete/{inventory}',[InventoryController::class, 'delete']);
 });

@@ -23,4 +23,9 @@ class User extends Authenticatable
         'password',
         'company'
     ];
+
+    public function inventories()
+    {
+        return $this->hasMany('App\Models\Inventory');
+    }
 }

@@ -21,6 +21,7 @@ class AuthController extends Controller
         if (!Auth::attempt($attr)) {
             return response()->json([
                 'res' => false,
+                'auth' => false,
                 'msg' => 'The Credentials Provided Are Not Valid'
             ]); 
         }
@@ -78,6 +79,7 @@ class AuthController extends Controller
         if (!$user) {
             return response()->json([
                 'res' => false,
+                'auth' => false,
                 'msg' => 'The Token Provided Are Invalid'
             ]);
         }
