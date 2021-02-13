@@ -13,6 +13,7 @@ class Product extends Model
         'name',
         'description',
         'image',
-        'category_id'
+        'category_id',
+        'count'
     ];
 }

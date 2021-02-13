@@ -13,4 +13,9 @@ class Category extends Model
         'name',
         'inventory_id'
     ];
+
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product');
+    }
 }

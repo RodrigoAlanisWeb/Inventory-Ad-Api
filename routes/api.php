@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,4 +38,14 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'category'], function () {
     Route::post('create/{inventory}',[CategoryController::class, 'create']);
     Route::get('get/{inventory}',[CategoryController::class, 'get']);
     Route::delete('/delete/{category}',[CategoryController::class, 'delete']);
+});
+
+Route::group(['middleware' => 'auth:api', 'prefix' => 'product'], function () {
+    Route::post('create',[ProductController::class, 'create']);
+    Route::get('/get/{product}',[ProductController::class, 'get']);
+    Route::get('/getall/{category}',[ProductController::class, 'getAll']);
+    Route::post('/update/{product}',[ProductController::class, 'update']);
+    Route::delete('/delete/{product}',[ProductController::class, 'delete']);
+    Route::get('/add/{product}/{count}',[ProductController::class, 'add']);
+    Route::get('/remove/{product}/{count}',[ProductController::class, 'remove']);
 });
