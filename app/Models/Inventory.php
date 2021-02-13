@@ -19,4 +19,9 @@ class Inventory extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function categories()
+    {
+        return $this->hasMany('App\Models\Category');
+    }
 }
