@@ -57,7 +57,7 @@ class CategoryController extends Controller
         return response()->json([
             'res' => true,
             'auth'=> true,
-            'inventories' => $inventory->categories,
+            'categories' => $inventory->categories,
         ]);
     }
 
@@ -71,4 +71,13 @@ class CategoryController extends Controller
             'msg' => 'Category Deleted Successfully'
         ]);
     }
+
+    public function getOne(Category $category) {
+        return response()->json([
+            'res' => true,
+            'auth'=> true,
+            'category' => $category
+        ]); 
+    }
+
 }

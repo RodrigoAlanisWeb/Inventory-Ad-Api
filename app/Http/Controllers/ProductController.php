@@ -16,16 +16,13 @@ class ProductController extends Controller
             'description' => 'required|string',
             'category' => 'required',
             'count' => 'required',
-            'image' => 'required|file'
         ]);
 
         try {
-            $path = $request->file('image')->store('images');
             Product::create([
                 'name' => $request->get('name'),
                 'description' => $request->get('description'),
                 'category_id' => $request->get('category'),
-                'image' => $path,
                 'count' => $request->get('count')
             ]);
         } catch (\Throwable $th) {

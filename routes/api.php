@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'user'], function () {
 Route::group(['middleware' => 'auth:api', 'prefix' => 'inventory'], function () {
     Route::post('create',[InventoryController::class, 'create']);
     Route::get('/get',[InventoryController::class, 'get']);
+    Route::get('/get/{inventory}',[InventoryController::class, 'getOne']);
     Route::post('/update/{inventory}',[InventoryController::class, 'update']);
     Route::delete('/delete/{inventory}',[InventoryController::class, 'delete']);
 });
@@ -37,6 +38,7 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'inventory'], function () 
 Route::group(['middleware' => 'auth:api', 'prefix' => 'category'], function () {
     Route::post('create/{inventory}',[CategoryController::class, 'create']);
     Route::get('get/{inventory}',[CategoryController::class, 'get']);
+    Route::get('getOne/{category}',[CategoryController::class, 'getOne']);
     Route::delete('/delete/{category}',[CategoryController::class, 'delete']);
 });
 

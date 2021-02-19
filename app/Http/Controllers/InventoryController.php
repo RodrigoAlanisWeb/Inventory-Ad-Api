@@ -46,6 +46,14 @@ class InventoryController extends Controller
         ]);
     }
 
+    public function getOne(Inventory $inventory) {
+        return response()->json([
+            'res' => true,
+            'auth'=> true,
+            'inventory' => $inventory
+        ]); 
+    }
+
     public function get()
     {
         $user = Auth::user();
@@ -58,11 +66,18 @@ class InventoryController extends Controller
             ]);
         }
 
+        if (count($user->inventories) != 0) {
+            return response()->json([
+                'res' => true,
+                'auth'=> true,
+                'inventories' => $user->inventories,
+            ]);
+        }
+
         return response()->json([
             'res' => true,
             'auth'=> true,
-            'inventories' => $user->inventories,
-        ]);
+        ]);    
     }
 
     public function delete(Inventory $inventory)

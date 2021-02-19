@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'company'
+        'company',
+        'g_token'
     ];
 
     public function inventories()
